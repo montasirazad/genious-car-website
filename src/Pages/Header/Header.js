@@ -1,23 +1,37 @@
 import React from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import useAuth from '../LogIn/Hooks/useAuth';
+
 
 
 const Header = () => {
+  const { users, signInUsingGoogle, logOut } = useAuth();
   return (
     <>
-      <Navbar bg="dark" variant="dark" sticky="top">
+      <Navbar collapseOnSelect expand='lg' bg="dark" variant="dark" sticky="top">
         <Container>
           <Navbar.Brand href="#home">Genius Car Mechanics</Navbar.Brand>
-        
+
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
-          
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#services">Services</Nav.Link>
-            <Nav.Link href="#experts">Experts</Nav.Link>
-          
+
+            <Nav.Link as={Link} to="/home#home">Home</Nav.Link>
+            <Nav.Link as={Link} to="/home#services">Services</Nav.Link>
+            <Nav.Link as={Link} to="#experts">Experts</Nav.Link>
+
+            {
+              users?.email ?
+                <Button variant='light' onClick={logOut}>Log out</Button> :
+                <Nav.Link as={Link} to="/login">Log in</Nav.Link>
+            }
+
             <Navbar.Text>
-              Signed in as: <a href="#login">Mark Otto</a>
+
+              {
+                users.email && <p> Signed in as:{users?.displayName}</p>
+              }
+               
             </Navbar.Text>
           </Navbar.Collapse>
 
