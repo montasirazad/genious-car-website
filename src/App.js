@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import AuthProvider from './context/AuthProvider';
+import AddService from './Pages/AddService/AddService';
 import Booking from './Pages/Booking/Booking';
 import Header from './Pages/Header/Header';
 import Home from './Pages/Home/Home/Home';
@@ -23,6 +24,7 @@ function App() {
             <Booking />
           </PrivateRoute>} />
           <Route path='/login' element={<LogIn />} />
+          <Route path='/addService' element={<AddService />} />
           <Route path='*' element={<NotFound />} />
 
 
