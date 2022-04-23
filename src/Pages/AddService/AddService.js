@@ -29,4 +29,4 @@ const AddService = () => {
     );
 };
 
-export default AddService; <h1>ADD service</h1>
+export default AddService; 
